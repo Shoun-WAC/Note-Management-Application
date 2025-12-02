@@ -15,7 +15,7 @@ class NoteCreateView(APIView):
         try:
             user_type = request.user.profile.user_type
             if user_type != 'Admin' and user_type != 'Editor':
-                return error_response(error_message="Only admin users can create notes", status=status.HTTP_403_FORBIDDEN)
+                return error_response(error_message="Only Admin and Editor can create notes", status=status.HTTP_403_FORBIDDEN)
             
             serializer = NoteManagementSerializer(data=request.data)
 
@@ -32,7 +32,7 @@ class NoteCreateView(APIView):
         try:
             user_type = request.user.profile.user_type
             if user_type != 'Admin' and user_type != 'Editor':
-                return error_response(error_message="Only admin users can update notes", status=status.HTTP_403_FORBIDDEN)
+                return error_response(error_message="Only Admin and Editor can update notes", status=status.HTTP_403_FORBIDDEN)
             
             note_id = request.data.get('note_id')
             if not note_id:
@@ -57,7 +57,7 @@ class NoteCreateView(APIView):
         try:
             user_type = request.user.profile.user_type
             if user_type != 'Admin' and user_type != 'Editor':
-                return error_response(error_message="Only admin users can delete notes", status=status.HTTP_403_FORBIDDEN)
+                return error_response(error_message="Only Admin and Editor can delete notes", status=status.HTTP_403_FORBIDDEN)
             
             note_id = request.data.get('note_id')
             if not note_id:
@@ -122,7 +122,7 @@ class NoteTagCreationView(APIView):
         try:
             user_type = request.user.profile.user_type
             if user_type != 'Admin' and user_type != 'Editor':
-                return error_response(error_message="Only Admin users or Editors can create tags", status=status.HTTP_403_FORBIDDEN)
+                return error_response(error_message="Only Admin or Editors can create tags", status=status.HTTP_403_FORBIDDEN)
             
             tag_name = request.data.get('tag_name')
             if not tag_name:

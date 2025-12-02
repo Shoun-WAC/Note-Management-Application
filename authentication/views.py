@@ -1,11 +1,8 @@
 from django.shortcuts import render
 from .helpers import error_response, success_response
-# Create your views here.
-# accounts/views.py
 from django.contrib.auth import authenticate
 from rest_framework.views import APIView
 from .models import Profile
-# from rest_framework.response import Response
 from rest_framework import status
 from .serializers import RegisterSerializer
 from rest_framework.permissions import AllowAny
